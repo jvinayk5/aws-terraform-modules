@@ -77,6 +77,9 @@ resource "aws_lb_target_group" "this" {
 }
 
 # With a certificate: HTTP redirects to HTTPS. Without one: HTTP forwards to targets.
+# HTTP is intentional: with certificate_arn set this listener redirects to HTTPS.
+# Without a certificate it forwards plain HTTP, which is only meant for short-lived demos.
+#trivy:ignore:AVD-AWS-0054
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.this.arn
   port              = 80

@@ -54,6 +54,8 @@ terraform apply
 terraform destroy   # when finished
 ```
 
+**HTTPS note:** without `certificate_arn` the ALB serves plain HTTP, which is only suitable for short-lived demos. Set a certificate for anything real; HTTP then redirects to HTTPS.
+
 **Cost note:** by default the example creates only the VPC, ECR, S3 and ALB. The ALB is billed hourly. The NAT gateway and the database cost more and are off unless you set `enable_nat_gateway = true` or `create_database = true`. Always run `terraform destroy` after testing.
 
 ## Quality checks
